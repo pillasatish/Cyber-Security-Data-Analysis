@@ -3,9 +3,12 @@ title: "CSC8631- Data Management and Explanatory Data Analysis Project"
 author: "SATISH PILLA"
 date: "5/20/2022"
 output:
+  html_document:
+    toc: yes
+    df_print: paged
   pdf_document:
-    toc: true
-    number_sections: true
+    toc: yes
+    number_sections: yes
     fig_caption: yes
 ---
 
@@ -25,12 +28,12 @@ source('./src/eda.R')
 #source('./src/Images.Rmd')
 ```
 \newpage
-# BUSINESS UNDERSTANDING 
+# 1. BUSINESS UNDERSTANDING 
 
 Future Learn, an online learning platform, offers a course called Cyber Security: Safety at Home, Online. This three-week self-paced course focuses on critical cyber security issues. The courses are divided into three parts, each of which is studied over three weeks: internet privacy, payment security, and home security.
 From 2016 to 2018, the course was offered seven times. Throughout the course, a variety of data was collected. This project aims to evaluate the data and get some useful insights that can be utilized to improve the course and establish a viable business model for future courses.
 
-# DATA UNDERSTANDING
+# 2. DATA UNDERSTANDING
 
 Each time the course is run, around 8 data files are generated.
 
@@ -49,44 +52,41 @@ The enrollments data set contains the learners' information, including their uni
 
 The details of the learners who left the course at what stage and for what reason can be found in the leaving survey response dataset. Each learner's responses to quiz questions conducted at a certain moment in each week are collected in the question response data collection. The quiz's results are also included. Learners who started and left the step at particular times are recorded in the step activity data collection. The video statistics data set includes videos of certain steps with titles and information such as time, views, downloads, viewed percentage, and learners' viewed continents. The weekly survey replies data collection contains the learner's input on the course.
 
-# OBJECTIVE
+# 3. OBJECTIVE
 
 This investigation has primarily two objectives:
 
-## Selecting the Right Audience.
+## 3.1 Selecting The Right Audience.
 
 To select the right audience we must know from which location or country the students are getting most enrolled into the course, Once we know from which location the most people are getting enrolled we can do further analysis on learners gender, education qualification, employment background, status and age etc. All this analysis will help the course provider in targeting the right audience and helps us in better understanding of the students or people showing a strong interest in the course.
 
-## Investigating the delivery methods.
+## 3.2 Investigating The Delivery Methods.
 
 Once we know who the target audience are, we can make course interesting and appealing to the learners. We can do this by investigating the delivery methods. We know that the course is primarily offered in four formats: video, articles, discussion, and a quiz which is conducted at the end of each week. Once we know which format is most popular among the students we can use that format to attract more audience to learn the course. 
 
-# DATA PREPRATION
+# 4 DATA PREPRATION
 
 For my first analysis(Selecting the Right Audience) I have considered cyber security enrollment data files from all of the runs from 1 to 7. For the second analysis(Investigating the delivery methods) I am considering using cyber security stats dataset to know which delivery method is more efficient.
 
-## Merging data:
-
+## 4.1 Merging Data
 Combining data from all iterations of the same file genre. For example, enrollment data from each iteration is combined row by row (rbind) on top of each other and similarly it is done for stat dataset. The goal of merging data from several iterations is to create a more comprehensive picture of how the course is functioning, who is enrolling in it, and how they are using it.
 
-## Independent data: 
-
+## 4.2 Independent Data
 To see how the data changes between different runs of the course, all different file genres from various iterations are also kept separately. For example to know the unique count of learner, we will use each individual enrollments dataset and plot how the course is changing over time form when the course was for 1st to 7th time(2016 to 2018).
 
-## Removing Unkowns: 
-
+## 4.3 Removing Unkowns
 Since the majority of the fields are unknown, all of the analysis are done by deleting "unknown" values. As a result, this study may or may not represent the genuine population distribution. Since most of the values in the country column are "unknown," we are using "detected country" rather than "country" from enrollment data to determine where the majority of learners are enrolling.
 
 
-# MODELING
+# 5 MODELING
 
 This research was conducted using NUMERICAL and GRAPHICAL summaries as modelling tools. This was accomplished by combining R-markdown with a variety of supporting libraries such as ggplot, dplyr, and many others. All of these are combined utilizing the Project template for better project management and reproducibility. The CRISP-DM approach is used for the analysis.
 
-# DESIGN AND IMPLEMENTATION
+# 6 DESIGN AND IMPLEMENTATION
 
-##Intial Data Analysis:
+## Intial Data Analysis:
 
-**How has the popularity of a course changed over the last seven years?**
+**6.1 How has the popularity of a course changed over the last seven years?**
 
 To begin, we can look at how the popularity of the course has changed during the last seven times it has been run. This can be investigated by looking at the cyber-security-enrollments data set from all of the Runs and seeing how the numbers have evolved over time.
 
@@ -104,8 +104,20 @@ From figure 1 and 2 we can clearly see that there were around 14398 which is 39%
 
 \newpage
 
-**Reason(s) for Un-enrollment?**
+**6.2 Reason(s) for Un-enrollment?**
 
+We'd like to know how many students have registered up for the course and how many have dropped out. UN-enrollment reasons and the percentage of students who enrolled but did not start the course, So at first we are binding all the unerollment dataset and step-activity datase, then we are calculating total number of students from enrollment dataset, number of students unregistered from the course from leaving survey response, number of students who started the course from step-activity dataset. From below table we can see that total 35225 students where enrolled over the period of 7 runs. Over the 7 runs only 370 people un-registered the course which is very good number, but at the same time 20285 students did not start the course, So mostly they will fall under un-register category. One of the positive sign is that out 35225 students 14570 student started the course.
+
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Table giving summary of student register, un-register, student who did not start the course and student who started the course"}
+summary_g
+```
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Student Started ,UN−Enrolled And Did Not Start The Course"}
+pie_chart_overall_representation
+```
+
+From figure 4 we can get an overall view of the the students who started the course, did not start the course and un-enrolled from the course. So according to the figure, 57.6 percent have only begun the course. More than a 40% of students who enrolled in the course never started it, and only 1% percent dropped out of the course when the course was run over 7 times.
 
 
 But our primary objective is to investigate the location where course is most popular, so let's now check for the continents and countries were the course is most popular.

@@ -47,7 +47,28 @@ cyber_security_7_leaving_survey_responses <- read_csv("data/cyber-security-7_lea
 
 leaving_survey= rbind(cyber_security_1_leaving_survey_responses, cyber_security_2_leaving_survey_responses, cyber_security_3_leaving_survey_responses, cyber_security_4_leaving_survey_responses, cyber_security_5_leaving_survey_responses, cyber_security_6_leaving_survey_responses, cyber_security_7_leaving_survey_responses)
 
-leaving_survey
+#leaving_survey
+
+#Reading all the step activity dataset files
+
+cyber_security_1_step_activity <- read_csv("data/cyber-security-1_step-activity.csv")
+
+cyber_security_2_step_activity <- read_csv("data/cyber-security-2_step-activity.csv")
+
+cyber_security_3_step_activity <- read_csv("data/cyber-security-3_step-activity.csv")
+
+cyber_security_4_step_activity <- read_csv("data/cyber-security-4_step-activity.csv")
+
+cyber_security_5_step_activity <- read_csv("data/cyber-security-5_step-activity.csv")
+
+cyber_security_6_step_activity <- read_csv("data/cyber-security-6_step-activity.csv")
+
+cyber_security_7_step_activity <- read_csv("data/cyber-security-7_step-activity.csv")
+
+
+step_activity= rbind(cyber_security_1_step_activity, cyber_security_2_step_activity, cyber_security_3_step_activity, cyber_security_4_step_activity, cyber_security_5_step_activity, cyber_security_6_step_activity, cyber_security_7_step_activity)
+
+
 
 
 # Finding the total number of enrollments over the course run  
@@ -78,3 +99,38 @@ final_labels<-paste(labels_new,'%',sep = "")
 final_labels
 lab <- paste0(round(data/sum(data) * 100, 2), "%")
 lab
+
+
+
+
+# Total no of students registered 
+student_register = length(unique(enrolments$learner_id))
+#student_register
+# No of students unregistered 
+student_unregistered=length(unique(leaving_survey$learner_id))
+#student_unregistered
+# percentage unregistered
+Percentage_unregsiter=(student_unregistered/student_register)*100
+#Percentage_unregistered
+# percent students after unregistered
+student_after_unregister = student_register - student_unregistered # no of students registered students - no of students unregistered
+percentage_student_after_unregister = (student_after_unregister/student_register)*100
+#percentage_student_after_unregistered
+# No of students who started the course 
+student_started = length(unique(step_activity$learner_id))
+#student_started
+# percentage of students who started the course 
+percentage_started =  (student_started/student_register)*100
+#percentage_started
+
+# percentage who did not start the course 
+student_not_started = student_after_unregister - student_started
+#student_not_started
+percentage_student_not_started = (student_not_started/student_register)*100
+percentage_student_not_started
+
+
+summary_g= data.frame( Summary=c("Total students Register","Students Un-register","Student did not start the Course","Students Started the Course"),Count_number=c(student_register,student_unregistered,student_started,student_not_started))
+#summary_table=setDT(summary_g)
+#summary_g
+percentage_dataframe = data.frame(reason = c("Started the course","Did not start the course", "Un-enrolled from the course"), percent =c(percentage_started,percentage_student_not_started,Percentage_unregsiter ))

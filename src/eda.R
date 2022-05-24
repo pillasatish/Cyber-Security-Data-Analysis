@@ -13,3 +13,17 @@ enrollments_pt
 pie3d=pie3D(data,labels = final_labels,explode = 0.05,main='Percentage of Learners Enrolled Over Each Batch',labelcex =1.2,shade =1.75,radius =1)
 
 
+summary_g= data.frame( Summary=c("Total students Register","Students Un-register","Student did not start the Course","Students Started the Course"),Count_number=c(student_register,student_unregistered,student_started,student_not_started))
+#summary_table=setDT(summary_g)
+#summary_g
+
+#STUDENT STARTING ,UN???ENROLLED AND DID NOT START THE COURSE
+pie_chart_overall_representation <- percentage_dataframe %>% plot_ly(labels = ~reason,
+                      values = ~percent, 
+                      marker = list(colors = c('#00aa7f', '#ff0000','#ccccc7')))
+pie_chart_overall_representation <- pie_chart_overall_representation %>% 
+  add_pie(hole = 0.55,
+          textfont = list(size = 18))  %>%
+  layout(legend = list(font = list(size = 18)),
+         hoverlabel = list(font = list(size = 18)))
+pie_chart_overall_representation
