@@ -1,0 +1,41 @@
+---
+title: "Saving-Images"
+author: "SATISH PILLA"
+date: "5/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE,message=FALSE,echo=FALSE,results='hide',warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+```{r message=FALSE,results='hide',echo=FALSE,warning=FALSE}
+library("ProjectTemplate")
+```
+
+```{r message=FALSE,echo=FALSE,results='hide',warning=FALSE}
+load.project()
+```
+
+```{r message=FALSE,results='hide',echo=FALSE,warning=FALSE}
+source('eda.R') 
+```
+
+```{r Courses vs No of students, fig.width= 6, fig.height=4, fig.align = 'center',echo=FALSE,warning=FALSE}
+enrollments_pt
+
+ggsave(file.path('graphs', 'enrollments_pt.png'))
+```
+
+```{r Courses vs No of students, fig.width= 6, fig.height=4, fig.align = 'center',echo=FALSE,warning=FALSE}
+# Give the chart file a name.
+png(file.path('graphs',"3d_pie_chart.png"))
+
+# Plot the chart.
+pie3D(data,labels = final_labels,explode = 0.05,main='Percentage of Learners Enrolled Over Each Batch',labelcex =1.2,shade =1.75,radius =1)
+# Save the file.
+dev.off()
+
+#ggsave(file.path('graphs', 'pie3d.png'))
+```
