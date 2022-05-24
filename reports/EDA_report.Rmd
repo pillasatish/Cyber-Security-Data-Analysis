@@ -7,6 +7,20 @@ output:
   html_document: default
 ---
 
+```{r setup, include=FALSE,message=FALSE,echo=FALSE,results='hide',warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+```{r message=FALSE,results='hide',echo=FALSE,warning=FALSE}
+library(ProjectTemplate)
+load.project()
+```
+
+```{r EDA, include = FALSE}
+source('./src/eda.R')
+```
+
 **BUSINESS UNDERSTANDING:** 
 
 Future Learn, an online learning platform, offers a course called Cyber Security: Safety at Home, Online. This three-week self-paced course focuses on critical cyber security issues. The courses are divided into three parts, each of which is studied over three weeks: internet privacy, payment security, and home security.
@@ -31,16 +45,51 @@ The enrollments data set contains the learners' information, including their uni
 
 The details of the learners who left the course at what stage and for what reason can be found in the leaving survey response dataset. Each learner's responses to quiz questions conducted at a certain moment in each week are collected in the question response data collection. The quiz's results are also included. Learners who started and left the step at particular times are recorded in the step activity data collection. The video statistics data set includes videos of certain steps with titles and information such as time, views, downloads, viewed percentage, and learners' viewed continents. The weekly survey replies data collection contains the learner's input on the course.
 
+**OBJECTIVE:**
 
-```{r setup, include=FALSE,message=FALSE,echo=FALSE,results='hide',warning=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir= normalizePath('..'))
+This investigation has primarily two objectives:
+
+Selecting the Right Audience.
+
+To select the right audience we must know from which location or country the students are getting most enrolled into the course, Once we know from which location the most people are getting enrolled we can do further analysis on learners gender, education qualification, employment background, status and age etc. All this analysis will help the course provider in targeting the right audience and helps us in better understanding of the students or people showing a strong interest in the course.
+
+Investigating the delivery methods.
+
+Once we know who the target audience are, we can make course interesting and appealing to the learners. We can do this by investigating the delivery methods. We know that the course is primarily offered in four formats: video, articles, discussion, and a quiz which is conducted at the end of each week. Once we know which format is most popular among the students we can use that format to attract more audience to learn the course. 
+
+**DATA PREPRATION:**
+
+For my first analysis(Selecting the Right Audience) I have considered cyber security enrollment data files from all of the runs from 1 to 7. For the second analysis(Investigating the delivery methods) I am considering using cyber security stats dataset to know which delivery method is more efficient.
+
+Merging data:
+
+Combining data from all iterations of the same file genre. For example, enrollment data from each iteration is combined row by row (rbind) on top of each other and similarly it is done for stat dataset. The goal of merging data from several iterations is to create a more comprehensive picture of how the course is functioning, who is enrolling in it, and how they are using it.
+
+Independent data: 
+
+To see how the data changes between different runs of the course, all different file genres from various iterations are also kept separately. For example to know the unique count of learner, we will use each individual enrollments dataset and plot how the course is changing over time form when the course was for 1st to 7th time(2016 to 2018).
+
+Removing Unkowns: 
+
+Since the majority of the fields are unknown, all of the analysis are done by deleting "unknown" values. As a result, this study may or may not represent the genuine population distribution. Since most of the values in the country column are "unknown," we are using "detected country" rather than "country" from enrollment data to determine where the majority of learners are enrolling.
+
+
+**MODELING:**
+
+This research was conducted using NUMERICAL and GRAPHICAL summaries as modelling tools. This was accomplished by combining R-markdown with a variety of supporting libraries such as ggplot, dplyr, and many others. All of these are combined utilizing the Project template for better project management and reproducibility. The CRISP-DM approach is used for the analysis.
+
+**DESIGN AND IMPLEMENTATION:**
+
+Data Analysis:
+
+How has the popularity of a course changed over the last seven years?
+
+To begin, we can look at how the popularity of the course has changed during the last seven times it has been run. This can be investigated by looking at the cyber-security-enrollments data set from all of the Runs and seeing how the numbers have evolved over time.
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.cap="Number of learners enrolled over different iteration"}
+plot(enrollments_pt)
 ```
 
-```{r message=FALSE,results='hide',echo=FALSE,warning=FALSE}
-library("ProjectTemplate")
-```
-
-```{r message=FALSE,echo=FALSE,results='hide',warning=FALSE}
-load.project()
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.cap="Percentage of Learners Enrolled Over Each Batch"}
+plot(enrolled_3D_plot)
 ```
