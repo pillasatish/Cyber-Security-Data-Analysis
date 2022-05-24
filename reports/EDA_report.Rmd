@@ -84,9 +84,9 @@ This research was conducted using NUMERICAL and GRAPHICAL summaries as modelling
 
 # DESIGN AND IMPLEMENTATION
 
-Data Analysis:
+##Intial Data Analysis:
 
-How has the popularity of a course changed over the last seven years?
+**How has the popularity of a course changed over the last seven years?**
 
 To begin, we can look at how the popularity of the course has changed during the last seven times it has been run. This can be investigated by looking at the cyber-security-enrollments data set from all of the Runs and seeing how the numbers have evolved over time.
 
@@ -103,5 +103,9 @@ pie3d=pie3D(data,labels = final_labels,explode = 0.05,main='Percentage of Learne
 From figure 1 and 2 we can clearly see that there were around 14398 which is 39% of total enrollments over all the course run from 2016 to 2018. The enrollments got decreased as the course run and became less than half by the end of last run. In the 7th run the total enrollments were only 2342 which is just 6% of the total enrollments over all the course run. We can say that as time progressed the popularity has decreased for the course. There may be n numbers of reason for less enrollments over the period of time so We'll try to figure out what's going wrong based on a variety of indicators, such as why students are dropping out and how they feel about the course.
 
 \newpage
+
+**Reason(s) for Un-enrollment?**
+
+
 But our primary objective is to investigate the location where course is most popular, so let's now check for the continents and countries were the course is most popular.
 
