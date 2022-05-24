@@ -27,7 +27,27 @@ cyber_security_6_enrolments <- read_csv("data/cyber-security-6_enrolments.csv")
 cyber_security_7_enrolments <- read_csv("data/cyber-security-7_enrolments.csv")
 
 enrolments = rbind(cyber_security_1_enrolments, cyber_security_2_enrolments, cyber_security_3_enrolments, cyber_security_4_enrolments, cyber_security_5_enrolments, cyber_security_6_enrolments, cyber_security_7_enrolments)
-#enrolments
+
+
+#Reading all the leaving survey response files
+
+cyber_security_1_leaving_survey_responses <- read_csv("data/cyber-security-1_leaving-survey-responses.csv")
+
+cyber_security_2_leaving_survey_responses <- read_csv("data/cyber-security-2_leaving-survey-responses.csv")
+
+cyber_security_3_leaving_survey_responses <- read_csv("data/cyber-security-3_leaving-survey-responses.csv")
+
+cyber_security_4_leaving_survey_responses <- read_csv("data/cyber-security-4_leaving-survey-responses.csv")
+
+cyber_security_5_leaving_survey_responses <- read_csv("data/cyber-security-5_leaving-survey-responses.csv")
+
+cyber_security_6_leaving_survey_responses <- read_csv("data/cyber-security-6_leaving-survey-responses.csv")
+
+cyber_security_7_leaving_survey_responses <- read_csv("data/cyber-security-7_leaving-survey-responses.csv")
+
+leaving_survey= rbind(cyber_security_1_leaving_survey_responses, cyber_security_2_leaving_survey_responses, cyber_security_3_leaving_survey_responses, cyber_security_4_leaving_survey_responses, cyber_security_5_leaving_survey_responses, cyber_security_6_leaving_survey_responses, cyber_security_7_leaving_survey_responses)
+
+leaving_survey
 
 
 # Finding the total number of enrollments over the course run  
