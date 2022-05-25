@@ -138,13 +138,15 @@ The figure 4 and 5 depicts the most common reasons for un-enrollment. With 103 s
 
 \newpage
 But our primary objective is to investigate the location where course is most popular, so let's now check for the countries were the course is most popular.
-```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Percentage of Student Un-Enrolled vs Reasons"}
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Students Enrolling form Different Countries"}
 
 plot(countries_plot)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Percentage of Student Un-Enrolled vs Reasons"}
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Countries With Enrollments Greater Than 500 Students"}
 
 plot(countries_with_500)
 ```
 
+At first we are plotting a heat map to know from which part of the world most number of students are getting enrolled.
+Figures 3 show that the majority of students are from the United Kingdom, India, and the United States, with a small number from Australia, Saudi Arabia, Nigeria, Mexico, and Russia. From heat map we know from which countries students are getting enrolled, let try to get top 10 countries with more than 500 enrollments. So we are plotting a bar graph, Figure 4 show the top 10 countries with most number of enrollments. From the figure we can clearly see that more than 10000 students got enrolled form united kingdom , followed by india and united states with 3538 and 2117 students. So based on above data the course provider may focus on these countires to attract more students and build a strong business model in these countries.
