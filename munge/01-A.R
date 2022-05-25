@@ -37,6 +37,7 @@ cyber_security_2_leaving_survey_responses <- read_csv("data/cyber-security-2_lea
 
 cyber_security_3_leaving_survey_responses <- read_csv("data/cyber-security-3_leaving-survey-responses.csv")
 
+
 cyber_security_4_leaving_survey_responses <- read_csv("data/cyber-security-4_leaving-survey-responses.csv")
 
 cyber_security_5_leaving_survey_responses <- read_csv("data/cyber-security-5_leaving-survey-responses.csv")
@@ -134,3 +135,37 @@ summary_g= data.frame( Summary=c("Total students Register","Students Un-register
 #summary_table=setDT(summary_g)
 #summary_g
 percentage_dataframe = data.frame(reason = c("Started the course","Did not start the course", "Un-enrolled from the course"), percent =c(percentage_started,percentage_student_not_started,Percentage_unregsiter ))
+
+
+# Counting the number of time each reason was used in leaving survey:
+leaving_reason = data.frame(table(leaving_survey$leaving_reason))
+colnames(leaving_reason) = c('Reason', 'freq')
+leaving_reason
+
+
+#ploting the country heat map:
+
+countries_count = data.frame(table(enrolments$detected_country))
+#countries_count
+countries_with_greater_100 = countries_count[countries_count$Freq>100,]
+countries_count$Var1 = as.character(countries_count$Var1)
+
+country_name=countrycode(sourcevar = countries_count$Var1, "iso2c", "country.name")
+#country_name
+countries_count <- cbind(countries_count, country = country_name)
+countries_count
+
+world <- map_data("world")
+#world_map <- subset(world_map)
+
+countries_with_greater_500 = countries_count[countries_count$Freq>500,]
+country_500=na.omit(countries_with_greater_500)
+
+# plot with countries with greater than 500 enrollments 
+
+
+
+
+
+
+
