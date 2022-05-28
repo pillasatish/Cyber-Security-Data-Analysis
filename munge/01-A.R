@@ -161,7 +161,32 @@ world <- map_data("world")
 countries_with_greater_500 = countries_count[countries_count$Freq>500,]
 country_500=na.omit(countries_with_greater_500)
 
-# plot with countries with greater than 500 enrollments 
+
+# Removing unknown from each column(gender, education level, employment status, employment area, age range)...
+gender = data.frame(gender = enrolments$gender[enrolments$gender != 'Unknown'])
+gender = as.data.frame(table(gender$gender))
+
+#gender
+
+
+edu_lvl = data.frame(edu_lvl = enrolments$highest_education_level[enrolments$highest_education_level != 'Unknown'])
+edu_lvl = as.data.frame(table(edu_lvl$edu_lvl))
+#colnames(edu_lvl)<- c("Education Level","Freq")
+
+emp_status = data.frame(emp_status = enrolments$employment_status[enrolments$employment_status != 'Unknown'])
+emp_status = as.data.frame(table(emp_status$emp_status))
+#colnames(emp_status)<- c("Employment status","Freq")
+
+
+emp_area = data.frame(emp_area = enrolments$employment_area[enrolments$employment_area != 'Unknown'])
+emp_area = as.data.frame(table(emp_area$emp_area))
+#colnames(emp_area)<- c("Employment area","Freq")
+
+age_range = data.frame(age_range = enrolments$age_range[enrolments$age_range != 'Unknown'])
+age_range = as.data.frame(table(age_range$age_range))
+#colnames(age_range)<- c("Age Range","Freq")
+
+
 
 
 

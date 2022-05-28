@@ -84,7 +84,7 @@ This research was conducted using NUMERICAL and GRAPHICAL summaries as modelling
 
 # DESIGN AND IMPLEMENTATION
 
-## Intial Data Analysis:
+## Exploratory Data Analysis
 
 **How has the popularity of a course changed over the last seven years?**
 
@@ -135,8 +135,9 @@ plot(leaving_donut_plot)
 ```
 
 The figure 4 and 5 depicts the most common reasons for un-enrollment. With 103 students, the most common reason for dropping out is a lack of time, which is 13% of the total students un-enrolled from the course. Second most reason for un-enrollment was other with 97 students which is around 12%. Whereas 18 student dropped out because the course was too simple which constitute of 2.25% of total students unenrolled.
-
 \newpage
+
+## Selecting The Right Audience
 But our primary objective is to investigate the location where course is most popular, so let's now check for the countries were the course is most popular.
 ```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Students Enrolling form Different Countries"}
 
@@ -149,4 +150,28 @@ plot(countries_with_500)
 ```
 
 At first we are plotting a heat map to know from which part of the world most number of students are getting enrolled.
-Figures 3 show that the majority of students are from the United Kingdom, India, and the United States, with a small number from Australia, Saudi Arabia, Nigeria, Mexico, and Russia. From heat map we know from which countries students are getting enrolled, let try to get top 10 countries with more than 500 enrollments. So we are plotting a bar graph, Figure 4 show the top 10 countries with most number of enrollments. From the figure we can clearly see that more than 10000 students got enrolled form united kingdom , followed by india and united states with 3538 and 2117 students. So based on above data the course provider may focus on these countires to attract more students and build a strong business model in these countries.
+Figures 3 show that the majority of students are from the United Kingdom, India, and the United States, with a small number from Australia, Saudi Arabia, Nigeria, Mexico, and Russia. From heat map we know from which countries students are getting enrolled, let try to get top 10 countries with more than 500 enrollments. So we are plotting a bar graph, Figure 4 show the top 10 countries with most number of enrollments. From the figure we can clearly see that more than 10000 students got enrolled form united kingdom , followed by India and united states with 3538 and 2117 students. So based on above data the course provider may focus on these countries to attract more students and build a strong business model in these countries.
+
+Now we know that from which location the people are getting most enrolled, let's now check and focus on learner's gender, education background and various other factors which will help us understand our audience in better way.
+```{r, echo=FALSE, out.width="100%", fig.height=3, fig.width=6, fig.align = 'center', fig.cap="Gender Distrubtion"}
+plot(gender_plot)
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.height=3, fig.width=6, fig.align = 'center', fig.cap="Education level Distrubtion"}
+plot(education_level_plot)
+
+```
+\newpage
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Age Distrubtion"}
+plot(age_range_plot)
+```
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Employment status Distrubtion"}
+plot(emp_status_plot)
+```
+
+From above figures we can clearly see that male learners are more than female learners. Most learners age range is in between 26 to 35. There are significant number of learner in every age group except for all less than 18 years. Most learners who enrolled the course hold university degree at last people who are working full time are showing very keen interest in learning the course. SO a course provider may focus on the learners from all age range, having university degree, with full time job.
+
+\newpage
+## Investigating The Delivery Methods

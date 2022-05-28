@@ -97,3 +97,41 @@ countries_with_500=ggplot(country_500,aes(reorder(country,-Freq),Freq))+geom_bar
   theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
 
 ########################################################################################################
+
+########################################################################################################
+#gender distribution
+gender_plot=ggbarplot(gender, x = "Var1", y = "Freq",
+          fill = "Var1", color = "Var1", palette = "jco")+xlab('Gender')+ylab("")+
+  ggtitle("Gender Distrubtion")+theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+#gender_plot
+
+
+education_level_plot=ggbarplot(edu_lvl, x = "Var1", y = "Freq",
+                      fill = "Var1", color = "Var1", palette = "jco")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+xlab('Education Level')+ylab("")+
+  ggtitle("Eduation level Distrubtion")+theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+
+#education_level_plot
+
+#employmnet status
+emp_status_plot=ggbarplot(emp_status, x = "Var1", y = "Freq",
+                          fill = "Var1", color = "Var1", palette = "jco")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+xlab('Employment Status')+ylab("")+
+  ggtitle("Employment status Distrubtion")+theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+#emp_status_plot
+
+# employment area
+employment_area_plot=ggbarplot(emp_area, x = "Var1", y = "Freq",
+                               fill = "Var1", color = "Var1", palette = "jco")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+#employment_area_plot
+
+#age range
+age_range_plot=ggbarplot(age_range, x = "Var1", y = "Freq",
+                         fill = "Var1", color = "Var1", palette = "jco")+xlab('Age')+ylab("")+
+  ggtitle("Age Distrubtion")+theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+#age_range_plot
+
+########################################################################################################
+
