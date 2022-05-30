@@ -114,7 +114,7 @@ summary_g
 
 ```{r, echo=FALSE, out.width="100%", fig.height=6, fig.width=9, fig.align = 'center', fig.cap="Student Started ,Un−enrolled And Did not Start The Course"}
 #pie_chart_overall_representation
-summary=readPNG("C:/Users/pilla/Desktop/C1047209_PILLA_SATISH_EDA_PROJECT/graphs/newplot-summary.png")
+summary=readPNG("./graphs/newplot-summary.png")
 plot.new()
 rasterImage(summary, 0,0,1,1)
 ```
