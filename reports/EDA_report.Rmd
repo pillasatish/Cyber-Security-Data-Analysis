@@ -174,7 +174,7 @@ plot(education_level_plot)
 plot(age_range_plot)
 ```
 \newpage
-```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Employment status Distrubtion"}
+```{r, echo=FALSE, out.width="100%", fig.height=6, fig.width=9, fig.align = 'center', fig.cap="Employment status Distrubtion"}
 plot(emp_status_plot)
 ```
 
@@ -205,6 +205,8 @@ plot(Delivery_methods)
 ```
 
 From the figure 15 we can see that the unique number of students engaging in different delivery method is highly correlated with the data student visiting each modules. Almost all the delivery methods are highly correlated with student visiting each module. Most preferable method of delivery is either video or articles.
+
+
 **Evaluation based on 2nd Analysis:**
 At first we find out how students or learners are accessing the course. We saw that more than 75% percent learners are accessing the course through desktop. After that we find out which delivery method is most preferable by learners, we find out that most preferable method is either video or articles. The course content creator can focus making video more interesting to learners.
 

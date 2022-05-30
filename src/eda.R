@@ -204,3 +204,6 @@ Delivery_methods=ggplot(cust_plotting, aes(Modules, Value, fill = Delivery_Metho
   ggtitle("Unique No of Students Engaging In Different Delivery Methods")+
   theme_bw()+
   theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+
+########################################################################################################
+########################################################################################################
