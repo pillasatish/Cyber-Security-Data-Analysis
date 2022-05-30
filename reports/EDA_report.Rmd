@@ -149,8 +149,15 @@ plot(countries_plot)
 plot(countries_with_500)
 ```
 
+**Evaluation based on 1st Analysis:**
 At first we are plotting a heat map to know from which part of the world most number of students are getting enrolled.
-Figures 3 show that the majority of students are from the United Kingdom, India, and the United States, with a small number from Australia, Saudi Arabia, Nigeria, Mexico, and Russia. From heat map we know from which countries students are getting enrolled, let try to get top 10 countries with more than 500 enrollments. So we are plotting a bar graph, Figure 4 show the top 10 countries with most number of enrollments. From the figure we can clearly see that more than 10000 students got enrolled form united kingdom , followed by India and united states with 3538 and 2117 students. So based on above data the course provider may focus on these countries to attract more students and build a strong business model in these countries.
+Figures 7 show that the majority of students are from the United Kingdom, India, and the United States, with a small number from Australia, Saudi Arabia, Nigeria, Mexico, and Russia. From heat map we know from which countries students are getting enrolled, let try to get top 10 countries with more than 500 enrollments. So we are plotting a bar graph, Figure 4 show the top 10 countries with most number of enrollments. From the figure we can clearly see that more than 10000 students got enrolled form united kingdom , followed by India and united states with 3538 and 2117 students. So based on above data the course provider may focus on these countries to attract more students and build a strong business model in these countries.
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Video views based on geographical regions"}
+
+plot(vid_stat)
+```
+The above pie chart with video views based on geographical Region and the countries with high enrollment are highly correlated .So based on this we can see than about 85 % of the enrollments are from Europe , Asia and North-America. These are the regions who use the internet the most, so we could develop marketing strategies which could get more students enrolled.
 
 Now we know that from which location the people are getting most enrolled, let's now check and focus on learner's gender, education background and various other factors which will help us understand our audience in better way.
 ```{r, echo=FALSE, out.width="100%", fig.height=3, fig.width=6, fig.align = 'center', fig.cap="Gender Distrubtion"}
@@ -158,20 +165,72 @@ plot(gender_plot)
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.height=3, fig.width=6, fig.align = 'center', fig.cap="Education level Distrubtion"}
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=6, fig.align = 'center', fig.cap="Education level Distrubtion"}
 plot(education_level_plot)
 
 ```
-\newpage
+
 ```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Age Distrubtion"}
 plot(age_range_plot)
 ```
-
+\newpage
 ```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Employment status Distrubtion"}
 plot(emp_status_plot)
 ```
 
-From above figures we can clearly see that male learners are more than female learners. Most learners age range is in between 26 to 35. There are significant number of learner in every age group except for all less than 18 years. Most learners who enrolled the course hold university degree at last people who are working full time are showing very keen interest in learning the course. SO a course provider may focus on the learners from all age range, having university degree, with full time job.
+From above figures we can clearly see that male learners are more than female learners. Most learners age range is in between 26 to 35. There are significant number of learner in every age group except for all less than 18 years. Most learners who enrolled the course hold university degree at last people who are working full time are showing very keen interest in learning the course. So a course provider may focus on the learners from all age range, having university degree, with full time job.
 
 \newpage
 ## Investigating The Delivery Methods
+
+From video stats data we know that the cyber security course can be accessed on multiple devices, let's see most widely used devices to access the content. 
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Most Widely Used Device to Access The Content"}
+plot(device_used)
+```
+
+So from figure 13 we can clearly see that most learners accessed the course content through desktop. More than 70% student are accessing the course content through desktop. Less than 13% learners are accessing the course content through mobile and tablet.
+
+TO know which delivery method is most efficient we will divide the course into three modules and find the numbers of unique students going through each module.
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Unique Number of Students Going Through Each Module"}
+plot(Unique_visted)
+```
+
+From figure 13 we can see that around 20000 students visited the course module when the course was run over 7 iteration's. As the module progressed there is decline in the number of students participating in the modules. Only 6248 students visited the module 3.
+
+Each module contains a number of steps. Each lesson is primarily delivered through one of the following methods: videos, quizzes, articles, and discussions. As the course progresses, we'd like to know how many unique students have proceeded through each of the delivery methods. I used the step activity data set for this analysis and did some pre-processing to separate out the step numbers based on delivery methods.
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Unique No of Students Engaging In Different Delivery Methods"}
+plot(Delivery_methods)
+```
+
+From the figure 15 we can see that the unique number of students engaging in different delivery method is highly correlated with the data student visiting each modules. Almost all the delivery methods are highly correlated with student visiting each module. Most preferable method of delivery is either video or articles.
+**Evaluation based on 2nd Analysis:**
+At first we find out how students or learners are accessing the course. We saw that more than 75% percent learners are accessing the course through desktop. After that we find out which delivery method is most preferable by learners, we find out that most preferable method is either video or articles. The course content creator can focus making video more interesting to learners.
+
+
+# EVALUATION
+
+All of the analysis is carried out with the assumptions discussed in section 4 in mind. This may cause uncertainty, but we conducted numerous analyses for the same purpose on different data to back up our findings.
+
+1. We verified people from each iteration and then using the entire data (merged data), a final plot was produced to analyse what kind of people enroll for the course more frequently.
+
+2. To pinpoint the problem, we looked at the leaving survey, where a large number of fields were null, implying that the results could be skewed. Also, a large percentage of respondents stated "Other," so we have no idea what that means.
+
+3. We used video stats data to determine which continent has the most learners, then we analysed detected country data from the enrollment dataset, and they both complemented each other. The majority of students are from Europe and live in the United Kingdom.
+
+4. Since data was only provided from the third to the seventh iteration to generate estimates on which device was being utilised the most, analysis was done across 5 of the 7 runs of the course. We find out that most learnes accessed the course through desktop.
+
+5. We used the step activity data set for this analysis and did some pre-processing to separate out the step numbers based on delivery methods. We found that the most preferable delivery method is either video or articles.
+
+# DEPLOYMENT 
+
+The analysis was done in R, and it can be used to evaluate and compare subsequent runs of the course in the future.
+
+# CONCLUSION
+
+We can conclude from the numerous analyses performed in this report that the course content is good. To improve the course the course provider may focus on the countries with most enrollments.People of all ages, from the IT and education sectors, and working full-time are among the people who the course provider may target for the ideal audience, according to the analysis. The course can be divided into multiple courses or reduce the quiz questions so that serious learners can take the assessments whenever they want and casual learners can go through the content and learn from the course without having to spend a lot of time on quiz. At the end the course content creator can focus making video and articles more interesting to learners.
+
+
+
+

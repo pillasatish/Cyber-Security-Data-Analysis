@@ -135,3 +135,72 @@ age_range_plot=ggbarplot(age_range, x = "Var1", y = "Freq",
 
 ########################################################################################################
 
+########################################################################################################
+
+#video views based on Geographical regions
+p0 = ggplot() + theme_bw() + 
+  geom_bar(aes(x = "", y = avg, fill = cont.factor), 
+           stat = "identity", color = "white") + 
+  coord_polar("y", start = 0) + 
+  ggtitle("Video Views Based on Geographical Regions") + 
+  theme(plot.title = element_text(hjust = 0.1, size = 15),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid=element_blank(),
+        panel.border = element_blank())
+ypos = cumsum(avg) - 0.5 * avg
+ypos = 100 - ypos
+vid_stat = p0 + 
+  guides(fill = guide_legend(reverse = TRUE)) + 
+  scale_fill_brewer(palette = "GnBu", name = "Regions") + 
+  theme(legend.text=element_text(size=15),
+        legend.title = element_text(hjust = 0.5, size=15),
+        legend.key.size = unit(0.5,"cm")) + 
+  geom_text(aes(x = "", y = ypos, label = paste0(round(avg, digits = 1), "%")), size = 2.2)+
+  theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+vid_stat
+
+########################################################################################################
+
+########################################################################################################
+#Most widely used devices
+device_used=ggplot(device, aes(x = "", y = Usage, fill = row.names(device))) +
+  geom_col(color = "black") +
+  geom_label(aes(label = Usage), color = c("white", "white", "white"),
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE) +
+  guides(fill = guide_legend(title = "Usage")) +
+  scale_fill_viridis_d() +
+  coord_polar(theta = "y") +
+  ggtitle("Most Widely Used Device to Access The Content")+
+  theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+
+########################################################################################################
+
+
+########################################################################################################
+#Unique number of students going through each module
+
+Unique_visted=ggbarplot(student_visited_count_df, x = "chapter", y = "stud_per_chap",
+                          fill = "chapter", color = "chapter", palette = "jco")+geom_text(aes(label = stud_per_chap, vjust = 1))+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+xlab('Module Number')+ylab("Number of Unique Students")+
+  ggtitle("Unique Number of Students Going Through Each Module")+theme(plot.title = element_text(hjust = 0.5,face = 'bold'))
+
+Unique_visted
+########################################################################################################
+
+########################################################################################################
+
+#Unique No of Students Engaging In Different Delivery Methods
+Delivery_methods=ggplot(cust_plotting, aes(Modules, Value, fill = Delivery_Method)) + geom_bar(position="dodge", stat="identity") +
+  scale_fill_viridis(discrete = T) +facet_wrap(~Delivery_Method)+
+  geom_text(
+    aes(label = Value), size = 3,
+    vjust = 1.5, position = position_dodge(.9)
+  )+
+  xlab("Module No ") +
+  ylab("No. of Unique Students") +
+  ggtitle("Unique No of Students Engaging In Different Delivery Methods")+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5,face = 'bold'))

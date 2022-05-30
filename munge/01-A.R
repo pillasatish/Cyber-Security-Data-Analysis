@@ -6,9 +6,9 @@
 ########################################################################################################
 #                                                                                                      #
 # This file contains the code related to Data Munging: transformations like, joining different tables, #
-# merging tables row wise and column wise, text processing, melting table from wide format to long,    #
-# column and row renaming, column and row deletion, calculating different statistics like column mean, #
-# normalizing the data, etc.                                                                           #
+# merging tables row wise and column wise, melting table from wide format to long, column and row      #
+# renaming, column and row deletion.                                                                   #
+#                                                                                                      #
 ########################################################################################################
 #Reading all the enrollments files 
 
@@ -69,8 +69,18 @@ cyber_security_7_step_activity <- read_csv("data/cyber-security-7_step-activity.
 
 step_activity= rbind(cyber_security_1_step_activity, cyber_security_2_step_activity, cyber_security_3_step_activity, cyber_security_4_step_activity, cyber_security_5_step_activity, cyber_security_6_step_activity, cyber_security_7_step_activity)
 
+#Reading all the video_stat dataset files
+cyber_security_3_video_stats <- read_csv("data/cyber-security-3_video-stats.csv")
 
+cyber_security_4_video_stats <- read_csv("data/cyber-security-4_video-stats.csv")
 
+cyber_security_5_video_stats <- read_csv("data/cyber-security-5_video-stats.csv")
+
+cyber_security_6_video_stats <- read_csv("data/cyber-security-6_video-stats.csv")
+
+cyber_security_7_video_stats <- read_csv("data/cyber-security-7_video-stats.csv")
+
+video_stat= rbind(cyber_security_3_video_stats, cyber_security_4_video_stats, cyber_security_5_video_stats, cyber_security_6_video_stats, cyber_security_7_video_stats)
 
 # Finding the total number of enrollments over the course run  
 enrollment_data=list(cyber_security_1_enrolments,cyber_security_2_enrolments,cyber_security_3_enrolments,cyber_security_4_enrolments,cyber_security_5_enrolments,cyber_security_6_enrolments,cyber_security_7_enrolments)
@@ -185,6 +195,151 @@ emp_area = as.data.frame(table(emp_area$emp_area))
 age_range = data.frame(age_range = enrolments$age_range[enrolments$age_range != 'Unknown'])
 age_range = as.data.frame(table(age_range$age_range))
 #colnames(age_range)<- c("Age Range","Freq")
+
+
+per_cont = data.frame(video_stat$europe_views_percentage, video_stat$north_america_views_percentage,  video_stat$asia_views_percentage, video_stat$africa_views_percentage, video_stat$south_america_views_percentage, video_stat$oceania_views_percentage)
+
+colnames(per_cont) =  c("Europe", "North-America", "Asia","Africa","South-America","Oceania")
+avg_cont_view = per_cont %>% summarise_if(is.numeric, mean)
+#avg_cont_view
+conti_name = data.frame(cont=c("Europe", "North-America", "Asia","Africa","South-America","Oceania"),avg =as.numeric(avg_cont_view))
+
+avg= conti_name$avg
+avg
+round(avg, digits = 1)
+cont = conti_name$cont #############
+
+cont = cont[order(avg)]
+avg = sort(avg)
+round(avg,digits = 1)
+cont.factor = factor(cont, levels = as.character(cont))#########
+
+cont.factor
+
+view_stat=data.frame(avg,cont.factor)
+view_stat
+
+
+# Finding which device is being use more often to access the course content.
+desktop_percentage = video_stat %>% group_by(title) %>% summarize(desktop = round(mean(desktop_device_percentage),2))
+mobile_percentage = video_stat %>% group_by(title) %>% summarize(mobile = round(mean(mobile_device_percentage),2))
+tablet_percentage = video_stat %>% group_by(title) %>% summarize(tablet = round(mean(tablet_device_percentage),2))
+
+#Dataframe
+device = cbind(desktop_percentage, mobile_percentage[,2], tablet_percentage[,2])
+#device
+device = as.data.frame(round(colMeans(device[2:4]),2))
+#device
+colnames(device) = c("Usage")
+#device
+
+
+# unique no students visiting each chapter 
+unique_student=step_activity %>%
+  mutate(learner_id,chapter=trunc(step))
+# function to remove duplicates and classify to each chapters 
+chap_class=function(x){
+  a=c()
+  for(i in 1:3){
+    y=x %>%
+      filter(x$chapter==i)
+    z=distinct(y,learner_id,.keep_all = TRUE)
+    b=nrow(z)
+    a=c(a,b)
+    
+  }
+  return(a)
+}
+
+student_visited_count = chap_class(unique_student)
+student_visited_count
+student_visited_count_df=data.frame(chapter=c("1","2","3"),stud_per_chap=student_visited_count)
+student_visited_count_df
+
+# data frame by weeks 
+week_1= step_activity %>%
+  filter(week_number %in% c(1))
+week_2= step_activity %>%
+  filter(week_number %in% c(2))
+week_3= step_activity %>%
+  filter(week_number %in% c(3))
+
+# To seperate out videos , articles and quiz 
+
+# VIDEOS BY WEEK 
+week_1_vid= week_1 %>%
+  filter(step_number %in% c(5,14,17,19))
+week_2_vid= week_2 %>%
+  filter(step_number %in% c(4,11,17))
+week_3_vid= week_3 %>%
+  filter(step_number %in% c(2,14,15))
+
+
+
+# ARTICLES BY WEEK
+week_1_art= week_1 %>%
+  filter(step_number %in% c(3,6,7,9,12,13,15,16,18))
+week_2_art= week_2 %>%
+  filter(step_number %in% c(2,5,7,9,10,12,13,14,15,16,18,19,21,22))
+week_3_art= week_3 %>%
+  filter(step_number %in% c(5,6,7,8,9,10,13,17,20))
+
+# QUIZ BY WEEK 
+week_1_qiz= week_1 %>%
+  filter(step_number %in% c(8))
+week_2_qiz= week_2 %>%
+  filter(step_number %in% c(8,20))
+week_3_qiz= week_3 %>%
+  filter(step_number %in% c(11))
+
+# DISCUSSION BY WEEK 
+week_1_dis= week_1 %>%
+  filter(step_number %in% c(2,10,11))
+week_2_dis= week_2 %>%
+  filter(step_number %in% c(6,23))
+week_3_dis= week_3 %>%
+  filter(step_number %in% c(4,12,16,19))
+
+
+# COMBING VIDEOS , ARTICLES , QUIZ , DISCUSIION TO INDIVIDUAL DATA FRAME 
+video_stat = rbind(week_1_vid, week_2_vid, week_3_vid)
+article_stat=  rbind(week_1_art, week_2_art, week_3_art )
+quiz_stat = rbind(week_1_qiz, week_2_qiz, week_3_qiz)
+discussion_stat = rbind(week_1_dis, week_2_dis, week_3_dis)
+
+# Filterning The Unique Numbers and Counting Through The Week 
+unique_stat_2=function(x){ 
+  a=c()
+  for(i in 1:3){
+    y=x %>%
+      filter(x$week_number==i)
+    z=distinct(y,learner_id,.keep_all = TRUE)
+    b=nrow(z)
+    a=c(a,b)
+    
+  }
+  return(a)
+}
+unique_video_count = unique_stat_2(video_stat)
+
+
+unique_article_count = unique_stat_2(article_stat)
+
+unique_quiz_count = unique_stat_2(quiz_stat)
+
+unique_discussion_count = unique_stat_2(discussion_stat)
+
+# Dataframe 
+stat_count = data.frame(Video = unique_video_count , article = unique_article_count, quiz= unique_quiz_count, disscusion = unique_discussion_count )
+stat_count =t(stat_count)
+colnames(stat_count) =  c('Module-1','Module-2', 'Module-3')
+stat_count  = data.frame(stat_count)
+# BELOW STEPS FOR CLUSTER PLOT 
+stat_count_2 = tibble::rownames_to_column(stat_count, "Delivery_Method")
+#cons_df_num_t2$Delivery_Method
+
+cust_plotting = stat_count_2 %>% gather(key = Modules, value = Value, Module.1:Module.3)
+cust_plotting
 
 
 
