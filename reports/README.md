@@ -1,1 +1,1 @@
-Here you can store any output reports, such as HTML or LaTeX versions of tables, that you produce. Sweave or brew documents should also go in the `reports` directory.
+You can save any output reports you create, such as HTML or LaTeX versions of tables, here. Documents that have been produced should also be saved in the reports directory.
