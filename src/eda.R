@@ -9,6 +9,26 @@
 
 
 ########################################################################################################
+# Numerical summary of each dataset:
+
+#overview_enrollement=datatable(Numnerical_summary_enrollemts_1)
+# Overview of the data - Type = 1
+Numnerical_summary_enrollemts_1=ExpData(data=enrolments,type=1)
+
+# Structure of the data - Type = 2
+Numerical_summary_enrollents_2=ExpData(data=enrolments,type=2)
+
+
+Numnerical_summary_leaving_survey=ExpData(data=leaving_survey,type=1)
+
+Numnerical_summary_step_activity=ExpData(data=step_activity,type=1)
+
+Numnerical_summary_video_stat=ExpData(data=video_stat,type=1)
+
+
+########################################################################################################
+
+########################################################################################################
 # plotting the enrollments 
 enrollments_plot=ggplot(data=stud_count,aes(Runs,student_count,student_count))+geom_bar(stat="identity", fill = viridis(7), alpha=.8, width=.5)+
   geom_text(aes(label = student_count, vjust = 1))+

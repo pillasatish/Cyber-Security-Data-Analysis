@@ -51,6 +51,28 @@ The enrollments data set contains the learners' information, including their uni
 
 The details of the learners who left the course at what stage and for what reason can be found in the leaving survey response dataset. Each learner's responses to quiz questions conducted at a certain moment in each week are collected in the question response data collection. The quiz's results are also included. Learners who started and left the step at particular times are recorded in the step activity data collection. The video statistics data set includes videos of certain steps with titles and information such as time, views, downloads, viewed percentage, and learners' viewed continents. The weekly survey replies data collection contains the learner's input on the course.
 
+## Exploratory Data Analysis (Numerical Analysis)
+**Overview of Enrollment Dataset**
+
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Overiew of Enrollments Dataset"}
+kable(Numnerical_summary_enrollemts_1)
+```
+
+**Overview of Leaving Survey Dataset**
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Overiew of Leaving Survey Dataset"}
+kable(Numnerical_summary_leaving_survey)
+```
+
+**Overview of Step Activity Dataset**
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Overiew of Step Activity Dataset"}
+kable(Numnerical_summary_step_activity)
+```
+
+**Overview of Video Stat Dataset**
+```{r, echo=FALSE, out.width="100%", fig.height=4, fig.width=9, fig.align = 'center', fig.cap="Overiew of Video Stat Dataset"}
+kable(Numnerical_summary_video_stat)
+```
+
 # OBJECTIVE
 
 This investigation has primarily two objectives:
@@ -83,7 +105,7 @@ This research was conducted using NUMERICAL and GRAPHICAL summaries as modelling
 
 # DESIGN AND IMPLEMENTATION
 
-## Exploratory Data Analysis
+## Exploratory Data Analysis (Graphical Analysis)
 
 **How has the popularity of a course changed over the last seven years?**
 
@@ -94,7 +116,7 @@ plot(enrollments_pt)
 #include_graphics(paste0(getwd(),"/graphs/enrollments_pt.png")) 
 ```
 
-```{r echo=FALSE, out.width="100%", fig.height=4, fig.width=9,fig.align='center',fig.cap="Percentage of Learners Enrolled Over Each Batch"}
+```{r echo=FALSE, out.width="100%", fig.height=6, fig.width=10,fig.align='center',fig.cap="Percentage of Learners Enrolled Over Each Batch"}
 
 pie3d=pie3D(data,labels = final_labels,explode = 0.05,main='Percentage of Learners Enrolled Over Each Batch',labelcex =0.75,shade =1.5,radius =1)
 #include_graphics(paste0(getwd(),'/graphs/3d_pie_chart.png')) 
