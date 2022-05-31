@@ -1,6 +1,6 @@
 ---
 title: "CSC8631- Data Management and Explanatory Data Analysis Project"
-author: "SATISH PILLA"
+author: "SATISH PILLA-B210472095"
 date: "5/20/2022"
 output:
   pdf_document:
@@ -242,7 +242,7 @@ All of the analysis is carried out with the assumptions discussed in section 4 i
 
 3. We used video stats data to determine which continent has the most learners, then we analysed detected country data from the enrollment dataset, and they both complemented each other. The majority of students are from Europe and live in the United Kingdom.
 
-4. Since data was only provided from the third to the seventh iteration to generate estimates on which device was being utilised the most, analysis was done across 5 of the 7 runs of the course. We find out that most learnes accessed the course through desktop.
+4. Since data was only provided from the third to the seventh iteration to generate estimates on which device was being utilised the most, analysis was done across 5 of the 7 runs of the course. We find out that most learners accessed the course through desktop.
 
 5. We used the step activity data set for this analysis and did some pre-processing to separate out the step numbers based on delivery methods. We found that the most preferable delivery method is either video or articles.
 
@@ -253,6 +253,11 @@ The analysis was done in R, and it can be used to evaluate and compare subsequen
 # CONCLUSION
 
 We can conclude from the numerous analyses performed in this report that the course content is good. To improve the course the course provider may focus on the countries with most enrollments.People of all ages, from the IT and education sectors, and working full-time are among the people who the course provider may target for the ideal audience, according to the analysis. The course can be divided into multiple courses or reduce the quiz questions so that serious learners can take the assessments whenever they want and casual learners can go through the content and learn from the course without having to spend a lot of time on quiz. At the end the course content creator can focus making video and articles more interesting to learners.
+
+# FUTURE SCOPE
+
+While the research conducted for this paper yielded some encouraging outcomes, there is still need for more research to be done. Furthermore, if the enrollment file had not been so sparse, the entire study of un-enrollments in particular would have portrayed the most precise intuitions. Another proposed option is to create a dash board using R shiny that displays details of student activity based on real-time feed data, allowing module course module leaders to better understand the students' actions, perhaps lowering enrollments and increasing student engagement with the course.
+
 
 
 
