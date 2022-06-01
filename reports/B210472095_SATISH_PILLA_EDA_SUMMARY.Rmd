@@ -25,7 +25,7 @@ load.project()
 
 # Introduction
 
-Data management is an administrative process that includes acquiring, validating, storing, protecting and processing required data to ensure the accessibility, reliability, and timeliness of the data for its users. Exploratory data analysis is an approach to analyzing data sets to summarize their main characters, often with visual methods. The Data Analysis life cycle can be complex at times, thus numerous tools and approaches can be used to manage it effectively, such as ProjectTemplate for code management and repeatability, Git for version control, and CRISP-DM for data management 
+Data management is an administrative process that includes acquiring, validating, storing, protecting and processing required data to ensure the accessibility, reliability, and timeliness of the data for its users. Exploratory data analysis is an approach to analyzing data sets to summarize their main characters, often with visual methods. The Data Analysis life cycle can be complex at times, thus numerous tools and approaches can be used to manage it effectively, such as ProjectTemplate for code management and repeatability, Git for version control, and CRISP-DM for data management.
 
 # CRoss Industry Standard Process for Data Mining (CRISP-DM)
 
@@ -34,7 +34,7 @@ Throughout the course work we have learned various data science process models. 
 1. Business understandingWhat does the business require in terms of understanding?
 2. Data understanding - What data do we have and what data do we require? Is it sanitary?
 3. Data preparation — How will the data be organised for modelling?
-4. Modeling — How should we approach different modelling technqiue?
+4. Modeling — How should we approach different modelling technqiue?
 5. Evaluation – Which model best matches the company's goals?
 6. Deployment - How will stakeholders be able to see the results?
 
