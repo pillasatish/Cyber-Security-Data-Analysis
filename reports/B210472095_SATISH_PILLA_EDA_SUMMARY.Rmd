@@ -60,7 +60,7 @@ The main objective of the project is to find out some meaningful insight from th
 
 The course material is good, according to the multiple assessments done in this study. The course provider may choose to focus on the nations with the largest enrollments in order to improve the course. According to the data, people of all ages, from the IT and education industries, and working full-time are among the people who the course provider may target as the ideal audience. The course can be separated into many courses or the quiz questions can be reduced so that serious learners can take the assessments whenever they want and casual learners can read the content and learn from the course without having to spend a lot of time on the exam. Finally, the course material producer can concentrate on making the videos and articles more engaging.
 
-# Personal Refelction
+# Personal Reflection
 
 I had a great time working on this project and learned a lot. This module provided me with a great deal of knowledge. The CRISP-DM methodology for data management projects, as well as the project template and ggplot, were very useful and fascinating. The purpose of this project was to develop a set of analyses that might be used to improve student engagement and achievement by testing and proving concepts using FutureLearn data.
 
